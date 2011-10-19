@@ -10,15 +10,15 @@ To get this running you'll want to run
 
 1. Run bundle
 
-   bundle
+   `bundle`
 
 2. Migrate your database
   
-   rake db:migrate
+   `rake db:migrate`
    
 3. Start your server
 
-   rails server
+   `rails server`
 
 Duh right?
 
