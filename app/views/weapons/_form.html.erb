@@ -1,0 +1,6 @@
+<%= form_for([@user, @weapon]) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :ammo %>
+  <%= f.select :condition, ["New", "Rusty", "Broken"] %>
+  <%= f.date_select :purchased_on %>
+<% end %>

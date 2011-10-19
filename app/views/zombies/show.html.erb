@@ -1,0 +1,8 @@
+<h1><%= @zombie.name.titleize %></h1>
+
+<%= render @zombie.weapons %>
+
+<p><%= pluralize(@zombie.tweets.size, "Tweet") %></p> 
+
+<p><%= link_to "Create a new Tweet for #{@zombie.name}", new_zombie_tweet_path(@zombie) %></p>
+<p><%= link_to "Back to Zombies", zombies_path %></p>

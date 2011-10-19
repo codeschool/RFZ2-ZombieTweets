@@ -1,0 +1,25 @@
+<h1>Listing tweets</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th>Zombie</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.message %></td>
+    <td><%= tweet.zombie.name %></td>
+    <td><%= link_to 'Show', tweet %></td>
+    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+    <td><%= link_to 'Destroy', tweet, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<% unless params[:zombie_id] %>
+  <p><%= link_to "Back to Zombies", zombies_path %></p>
+<% end %>

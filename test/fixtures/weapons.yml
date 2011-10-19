@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  ammo: 1
+  is_broken: false
+  purchased_on: 2011-10-04
+
+two:
+  name: MyString
+  ammo: 1
+  is_broken: false
+  purchased_on: 2011-10-04

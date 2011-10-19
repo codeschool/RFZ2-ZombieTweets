@@ -1,0 +1,2 @@
+module WeaponsHelper
+end

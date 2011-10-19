@@ -1,0 +1,7 @@
+<h2><%= @zombie.name %>'s weapons</h2>
+<ul>
+<% @weapons.each do |w| %>
+  <li><%= link_to w.name, [@zombie, w] %></li>
+<% end %>
+</ul>
+<%= link_to "New Weapon", new_user_weapon_path(@user) %>
