@@ -2,7 +2,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :zombie
   has_many :categorizations
   has_many :categories, through: :categorizations
-  has_one :location, :foreign_key => :tweeter_id
+  has_one :location
 
   before_save :check_location
   before_save :set_show_location
@@ -11,9 +11,11 @@ class Tweet < ActiveRecord::Base
   after_destroy {|tweet| logger.info "Tweet #{tweet.id} deleted" }
 
   scope :recent, order('created_at desc').limit(4)
-  scope :graveyard, where(show_location: true, location: 'graveyard')
+  scope :graveyard, where(show_location: true, location: {name:'graveyard'})
 
   validates :message, presence: true
+
+  accepts_nested_attributes_for :location
 
   private
 

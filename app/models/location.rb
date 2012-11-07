@@ -1,3 +1,3 @@
 class Location < ActiveRecord::Base
-  belongs_to :tweet, :foreign_key => :tweeter_id, :dependent => :destroy
+  belongs_to :tweet, :dependent => :destroy
 end

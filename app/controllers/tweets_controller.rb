@@ -2,7 +2,11 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.recent.includes(:location)
+    if params[:zombie_id]
+      @tweets = Tweet.recent.includes(:location).where(zombie_id: params[:zombie_id])
+    else
+      @tweets = Tweet.recent.includes(:location)
+    end
     @graveyard_tweets = Tweet.recent.graveyard
 
     respond_to do |format|
@@ -27,6 +31,7 @@ class TweetsController < ApplicationController
   def new
     @zombie = Zombie.find(params[:zombie_id])
     @tweet = Tweet.new
+    @tweet.location = Location.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +50,7 @@ class TweetsController < ApplicationController
     @zombie = Zombie.find(params[:zombie_id])
     location = params[:tweet].delete :location
     @tweet = @zombie.tweets.new(params[:tweet])
-    @tweet.build_location(name: location)
+    @tweet.build_location(location)
 
     respond_to do |format|
       if @tweet.save
@@ -62,7 +67,7 @@ class TweetsController < ApplicationController
   # PUT /tweets/1.json
   def update
     @tweet = Tweet.find(params[:id])
-
+    binding.pry
     respond_to do |format|
       if @tweet.update_attributes(params[:tweet])
         format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }

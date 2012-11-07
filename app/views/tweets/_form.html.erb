@@ -4,8 +4,10 @@
     <%= f.text_field :message %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.fields_for :location do |l| %>
+      <%= l.label :name, :location %><br />
+      <%= l.text_field :name %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>
